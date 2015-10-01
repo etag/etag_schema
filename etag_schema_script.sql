@@ -10,6 +10,7 @@ DROP TABLE accessory_data CASCADE;
 CREATE TABLE readers
 (
   reader_id text NOT NULL,
+  name text,
   description text,
   user_id integer,
   CONSTRAINT readers_pk PRIMARY KEY (reader_id)
