@@ -9,8 +9,8 @@ DROP TABLE accessory_data CASCADE;
 --*********** TABLE readers ***********************
 CREATE TABLE readers
 (
-  reader_id text NOT NULL,
-  name text,
+  reader_id serial NOT NULL,
+  name varchar(255) NOT NULL,
   description text,
   user_id integer,
   CONSTRAINT readers_pk PRIMARY KEY (reader_id)
@@ -20,8 +20,9 @@ CREATE TABLE readers
 
 CREATE TABLE reader_location
 (
-  reader_id text,
+  reader_id integer NOT NULL,
   location_id serial NOT NULL,
+  name varchar(255),
   latitude double precision,
   longitude double precision,
   start_date date,
@@ -42,7 +43,7 @@ CREATE TABLE animal
 --*********** TABLE tags ***********************
 CREATE TABLE tags
 (
-  tag_id serial NOT NULL,
+  tag_id varchar(255) NOT NULL,
   start_date date,
   end_date date,
   animal_id integer,
@@ -54,20 +55,20 @@ CREATE TABLE tags
 --*********** TABLE tags_reads ***********************
 CREATE TABLE tag_reads
 (
-  reader_id text NOT NULL,
-  tag_id text NOT NULL,
+  tag_reads_id serial NOT NULL,
+  reader_id integer NOT NULL,
+  tag_id varchar(255) NOT NULL,
   "timestamp" timestamp without time zone,
   accessory_data_id integer,
-  CONSTRAINT tag_reads_pk PRIMARY KEY (reader_id, tag_id)
+  CONSTRAINT tag_reads_pk PRIMARY KEY (tag_reads_id)
 );
 
 --*********** TABLE accessory_data ***********************
 CREATE TABLE accessory_data
 (
   accessory_id serial NOT NULL,
-  reader_id text,
   "timestamp" timestamp without time zone,
-  type text,
+  accessory_type varchar(255),
   value json,
   CONSTRAINT accesory_id_pk PRIMARY KEY (accessory_id)
 );
