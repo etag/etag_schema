@@ -193,7 +193,6 @@ CREATE TABLE tag_reads (
     tag_id character varying(10) NOT NULL,
     user_id integer NOT NULL,
     tag_read_time timestamp with time zone NOT NULL,
-    field_data text NOT NULL,
     public boolean NOT NULL
 );
 
