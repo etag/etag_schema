@@ -41,7 +41,7 @@ SET default_with_oids = false;
 CREATE TABLE animal_hit_reader (
     id integer NOT NULL,
     reader_id character varying(10) NOT NULL,
-    animal_id integer NOT NULL,
+    animal_id integer,
     tag_id_id character varying(10) NOT NULL
 );
 
